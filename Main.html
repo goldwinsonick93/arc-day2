@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock Paper Scissor</title>
+        <link rel="stylesheet" href="Main.css">
+    </head>
+    <body>
+        <div id="menu-page">
+            <p id="menu-title">Rock Paper Scissor</p>
+            <button class="menu-btns">Start Game</button>
+            <button class="menu-btns">Credit</button>
+        </div>
+        <div id="credit-page" style="display:none">
+            <p class="credit-text">Rock paper scissor is a traditional game that everyone knows.</p>
+            <p class="credit-text">I literally made this game 3 hours before the deadline.</p>
+            <p class="credit-text" style="color:rgba(0,0,0,0.3)">Click anywhere to go back</p>
+        </div>
+        <div id="game-page" style="display:none">
+            <div id="game-top">
+                <div class="hand-box" style="background-image: url('./img/questionmark.png');"></div>
+                <div id="hand-stream">
+                    <div class="hand-box" style="background-image: url('./img/questionmark.png');"></div>
+                    <div class="hand-box" style="background-image: url('./img/questionmark.png');"></div>
+                    <div class="hand-box" style="background-image: url('./img/questionmark.png');"></div>
+                    <div class="hand-box" style="background-image: url('./img/questionmark.png');"></div>
+                </div>
+            </div>
+            <div id="game-score">
+                <label id="scoreboard">Score: </label>
+            </div>
+            <div id="game-bottom">
+                <div id="attack-div">
+                    <button class="attack-btn" style="background-image :url('./img/rock.png');"></button>
+                    <button class="attack-btn" style="background-image :url('./img/paper.png');"></button>
+                    <button class="attack-btn" style="background-image :url('./img/scissor.png');"></button>
+                    <label class="attack-label">1</label>
+                    <label class="attack-label">2</label>
+                    <label class="attack-label">3</label>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="Main.js"></script>
+</html>
