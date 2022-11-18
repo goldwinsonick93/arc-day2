@@ -9,6 +9,11 @@
             <p id="menu-title">Rock Paper Scissor</p>
             <button class="menu-btns">Start Game</button>
             <button class="menu-btns">Credit</button>
+
+            <div id="last-game" style="display:none">
+                <!-- Score : <br/>
+                Time :  -->
+            </div>
         </div>
         <div id="credit-page" style="display:none">
             <p class="credit-text">Rock paper scissor is a traditional game that everyone knows.</p>
@@ -25,8 +30,9 @@
                     <div class="hand-box" style="background-image: url('./img/questionmark.png');"></div>
                 </div>
             </div>
-            <div id="game-score">
-                <label id="scoreboard">Score: </label>
+            <div id="game-middle">
+                <div id="scoreboard">Score: </div>
+                <div id="timeboard">Time: </div>
             </div>
             <div id="game-bottom">
                 <div id="attack-div">

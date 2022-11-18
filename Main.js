@@ -10,6 +10,7 @@ const creditbtn = menubtns[1]
 
 const scoreboard = document.querySelector("#scoreboard")
 const handstream = document.querySelector("#hand-stream")
+const lastgame = document.querySelector("#last-game")
 
 creditbtn.addEventListener("click", ()=>{
     menupage.style.display = "none";
@@ -36,12 +37,6 @@ function getWinner(a,b){ // Parameter is "rock" / "paper" / "scissor"
     return res[x][y] // 1 a wins, 0 tie, -1 b wins
 }
 
-wins = 0
-loses = 0
-moveStream = []
-for(let i=0; i<4; i++){
-    moveStream.push(generateMove())
-}
 function updateStream(){
     for(let i=0;i<4;i++){
         handstream.children[i].style.backgroundImage = `url('./img/${moveStream[i]}.png')`
@@ -49,15 +44,17 @@ function updateStream(){
     scoreboard.textContent = `Wins: ${wins}, Loses: ${loses}`
     
 }
-updateStream()
 
-function gameMove(playerMove){
+function gameOver(){
+    gamepage.style.display = "none";
+    menupage.style.display = "block";
+    lastgame.style.display = "block";
+    lastgame.innerHTML = `Score: ${wins} <br/>Time: comming soon`
+    window.removeEventListener("keypress", keyPressed);
+}
+function nextStream(playerMove){
     botMove = moveStream[0];
     result = getWinner(playerMove, botMove)
-    if(result == 0){
-        //tie
-        return;
-    }
     if(result == 1){
         //win
         wins++;
@@ -65,17 +62,31 @@ function gameMove(playerMove){
         //lose
         loses++;
     }
+
+    if(loses == 5){
+        gameOver();
+        return;
+    }
+
+
     for (let i=0;i<3;i++){
         moveStream[i] = moveStream[i+1]
     }
     moveStream[3] = generateMove()
     updateStream()
-
 }
-
 function startgame(){
     menupage.style.display = "none";
     gamepage.style.display = "block";
+
+    wins = 0
+    loses = 0
+    moveStream = []
+    for(let i=0; i<4; i++){
+        moveStream.push(generateMove())
+    }
+    updateStream()
+
     keyPressed = (e)=>{
         move = ""
         if(e.key=="1"){
@@ -85,7 +96,7 @@ function startgame(){
         }else if(e.key=="3"){
             move = "scissor"
         }
-        if(move){gameMove(move)}
+        if(move){nextStream(move)}
     }
     window.addEventListener("keypress", keyPressed)
 }
